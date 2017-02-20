@@ -17,7 +17,7 @@ public class SuperPixelEditorController {
   // retrieves the color being used in the canvas & a function will be added that
   // retrieves the pixel position of where the mouse was clicked as well as the color
   // at that location.
-  public static Color currentColorSelected(){
-    return (SuperPixelEditorView.getColor() == null) ? Color.WHITE : SuperPixelEditorView.getColor();
+  public static Color currentViewColorSelected(){
+    return (SuperPixelEditorView.getPixelColor() == null) ? Color.WHITE : SuperPixelEditorView.getPixelColor();
   }
 }
