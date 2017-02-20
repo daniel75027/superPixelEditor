@@ -6,7 +6,6 @@
 package view;
 
 import controller.ColorPaletteController;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -192,7 +191,9 @@ public class SuperPixelEditorView extends Application {
     hbButtons.getChildren().add(saveBtn);
     hbButtons.getChildren().add(loadBtn);
 
+
     root.getChildren().addAll(contentPane);
+
     Scene scene = new Scene(root, 400, 250);
     
     primaryStage.setTitle("Super Pixel Art Editor");
