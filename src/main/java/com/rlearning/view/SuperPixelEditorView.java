@@ -115,8 +115,6 @@ public class SuperPixelEditorView extends Application {
         newWindowLayout.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         colorPicker.setValue(Color.WHITE);
         setPixelColor(Color.WHITE);
-        CanvasModel canvasModel = new CanvasModel();
-        canvasModel.serializeCanvasModel("Test.txt");
       }
     });
     
