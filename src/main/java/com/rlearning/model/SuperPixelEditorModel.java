@@ -5,6 +5,8 @@
  */
 package model;
 
+import javax.swing.filechooser.FileSystemView;
+
 /**
  * @author Andrew
  */

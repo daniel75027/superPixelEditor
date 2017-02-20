@@ -16,6 +16,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.CanvasModel;
 
 /**
  * @author Andrew
@@ -100,7 +101,6 @@ public class SuperPixelEditorView extends Application {
     popupStage.setScene(popupScene);
     popupLayout.getChildren().addAll(popupText);
     
-    //handlers - may be better suited in control
     colorPicker.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
@@ -115,6 +115,8 @@ public class SuperPixelEditorView extends Application {
         newWindowLayout.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         colorPicker.setValue(Color.WHITE);
         setPixelColor(Color.WHITE);
+        CanvasModel canvasModel = new CanvasModel();
+        canvasModel.serializeCanvasModel("Test.txt");
       }
     });
     
