@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package main.java.com.rlearning.view;
-
+import controller.ColorPaletteController;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -12,7 +12,6 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import main.java.com.rlearning.controller.CanvasResizeController;
 import main.java.com.rlearning.controller.ColorPaletteController;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,6 +23,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.CanvasModel;
 
 
 
@@ -196,7 +196,6 @@ public class SuperPixelEditorView extends Application {
     });
 
     // Menu Item Functions
-
     saveColorItem.setOnAction(new EventHandler<ActionEvent>(){
     	@Override
     	public void handle(ActionEvent event){
