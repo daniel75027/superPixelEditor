@@ -19,6 +19,38 @@ This project follows the
 Please make sure you read, understand and follow the coding standard before
 contributing.
 
+Also in addition to the Google Java Standard, we will be adding a piece of 
+documentation for the whole class that outlines what the class does, what objects it can create,
+what Instance variables it has, what methods it contains, as well as a todo list. 
+You may not see this kind of decimation all the time as a SWE, but it is
+helpful from a readability standpoint for any new devs who want to support the project. 
+  
+This documentation should appear after the import statements, and before any actual code 
+in the class. It should be ordered in the following format 
+
+Class Description   
+Instance Variables 
+*  variable1 
+    *  description 
+*  variable2
+    *  description 
+  
+Constructors 
+*  MyObject(int parameter)
+    *  description 
+
+Methods 
+*  public int getInt() 
+    *  description 
+*  public void method()
+    *  description 
+  
+Todos 
+*  Todo1
+    *  Subtask1 
+*  Todo2 
+    
+    
 
 ## Sharing your work
 

@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package com.rlearning.controller;
 
 import javafx.scene.paint.Color;
-import view.SuperPixelEditorView;
+
+import com.rlearning.view.SuperPixelEditorView;
+
 
 /**
- *
- * @author Andrew
+ * TODO: complete me
  */
 public class SuperPixelEditorController {
   // This gets the color picker color for now. It will later be changed so that it
