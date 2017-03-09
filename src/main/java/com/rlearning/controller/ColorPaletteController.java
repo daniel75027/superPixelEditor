@@ -17,7 +17,21 @@ import javafx.stage.Stage;
 
 
 /**
- * TODO: complete me
+ * Class Description.
+ *
+ * Instance variables
+ *
+ *
+ * Methods
+ *      public void saveColorPalette(ColorPicker colorPicker)
+ *
+ *      public static void loadColorPalette(ColorPicker colorPicker)
+ *
+ *      public static void saveToConfig()
+ *
+ *      public static void setRecentSavedDir(String sd)
+ *
+ *      public static String getRecentSavedDir()
  */
 public class ColorPaletteController {
   private static final String CONFIG_FILE = "resources/config";
@@ -59,6 +73,8 @@ public class ColorPaletteController {
     }
   }
 
+  //Could we get some more documentation here? Not sure how this works -Supah.
+  //Epically in the while loop.
   public static void loadColorPalette(ColorPicker colorPicker) {
     FileChooser fileChooser = new FileChooser();
     Stage openFileStage = new Stage();
@@ -125,7 +141,7 @@ public class ColorPaletteController {
   public static void setRecentSavedDir(String sd) {
     PrintWriter pw = null;
     try {
-      pw = new PrintWriter(new File("recources/config"));
+      pw = new PrintWriter(new File("resources/config"));
       pw.write(sd);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
