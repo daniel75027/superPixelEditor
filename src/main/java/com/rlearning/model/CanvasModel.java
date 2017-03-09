@@ -23,7 +23,7 @@ import controller.SuperPixelEditorController;
  */
 public class CanvasModel implements Serializable {
   //gets RGB color value from controller which is gotten from view
-  private Color currentViewPixelColor = SuperPixelEditorController.currentViewColorSelected();
+  //private Color currentViewPixelColor = SuperPixelEditorController.currentViewColorSelected();
 
   // using Java naming convention for final objects.
   // Gets Systems home directory path independent of platform/OS.
