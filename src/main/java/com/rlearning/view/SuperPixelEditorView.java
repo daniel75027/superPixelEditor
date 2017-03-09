@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main.java.com.rlearning.view;
-import controller.ColorPaletteController;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import main.java.com.rlearning.controller.CanvasResizeController;
-import main.java.com.rlearning.controller.ColorPaletteController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,13 +16,13 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import controller.ColorPaletteController;
 import model.CanvasModel;
+import main.java.com.rlearning.controller.CanvasResizeController;
+import main.java.com.rlearning.controller.ColorPaletteController;
 
 
-
-/**
- * @author Andrew
- */
 public class SuperPixelEditorView extends Application {
   private static Color pixelColor;
 
@@ -41,11 +34,8 @@ public class SuperPixelEditorView extends Application {
     SuperPixelEditorView.pixelColor = pixelColor;
   }
 
-
   @Override
   public void start(Stage primaryStage) {
-
-
     //new window opens after btnNewWindow is clicked
     Stage newWindowStage = new Stage();
     StackPane newWindowLayout = new StackPane();
@@ -53,43 +43,52 @@ public class SuperPixelEditorView extends Application {
     Button btnNewWindow = new Button("Open a window with this color");
     Button btnColorReset = new Button("Reset Window Color");
     Button btn = new Button("Color Picker");
+
     double sceneWidth = 400;
     double sceneHeight = 400;
 
     newWindowStage.setScene(newWindowScene);
     newWindowStage.setTitle("");
-   //Create menu bar
-        MenuBar menuBar = new MenuBar();
-        //Creates menu separator
-        SeparatorMenuItem separatorMenuItem1 = new SeparatorMenuItem();
-        SeparatorMenuItem separatorMenuItem2 = new SeparatorMenuItem();
-        SeparatorMenuItem separatorMenuItem3 = new SeparatorMenuItem();
-        SeparatorMenuItem separatorMenuItem4 = new SeparatorMenuItem();
-        //Creates menus
-        Menu menuFile = new Menu("File");
-        Menu menuEdit = new Menu("Edit");
-        Menu menuHelp = new Menu("Help");
-        //File menu items
-        MenuItem newItem = new MenuItem("New");
-        MenuItem openItem = new MenuItem("Open");
-        MenuItem saveItem = new MenuItem("Save");
-        MenuItem saveAsItem = new MenuItem("Save As");
-        MenuItem saveColorItem = new MenuItem("Save Color Palette");
-        MenuItem loadColorItem = new MenuItem("Load Color Palette");
-        MenuItem optionsItem = new MenuItem("Options...");
-        MenuItem exitItem = new MenuItem("Exit");
-        //Edit menu items
-        MenuItem undoItem = new MenuItem("Undo");
-        MenuItem redoItem = new MenuItem("Redo");
-        //Help menu items
-        MenuItem controlsItem = new MenuItem("Controls");
-        MenuItem aboutItem = new MenuItem("About");
-        //Adds menu items to the menus
-        menuFile.getItems().addAll(newItem,openItem,separatorMenuItem1,saveItem,saveAsItem,separatorMenuItem2,saveColorItem,loadColorItem,separatorMenuItem3,optionsItem,separatorMenuItem4,exitItem);
-        menuEdit.getItems().addAll(undoItem,redoItem);
-        menuHelp.getItems().addAll(controlsItem,aboutItem);
-        //Adds all the menus to the menu bar
-        menuBar.getMenus().addAll(menuFile,menuEdit,menuHelp);
+
+    //Create menu bar
+    MenuBar menuBar = new MenuBar();
+
+    //Creates menu separator
+    SeparatorMenuItem separatorMenuItem1 = new SeparatorMenuItem();
+    SeparatorMenuItem separatorMenuItem2 = new SeparatorMenuItem();
+    SeparatorMenuItem separatorMenuItem3 = new SeparatorMenuItem();
+    SeparatorMenuItem separatorMenuItem4 = new SeparatorMenuItem();
+
+    //Creates menus
+    Menu menuFile = new Menu("File");
+    Menu menuEdit = new Menu("Edit");
+    Menu menuHelp = new Menu("Help");
+
+    //File menu items
+    MenuItem newItem = new MenuItem("New");
+    MenuItem openItem = new MenuItem("Open");
+    MenuItem saveItem = new MenuItem("Save");
+    MenuItem saveAsItem = new MenuItem("Save As");
+    MenuItem saveColorItem = new MenuItem("Save Color Palette");
+    MenuItem loadColorItem = new MenuItem("Load Color Palette");
+    MenuItem optionsItem = new MenuItem("Options...");
+    MenuItem exitItem = new MenuItem("Exit");
+
+    //Edit menu items
+    MenuItem undoItem = new MenuItem("Undo");
+    MenuItem redoItem = new MenuItem("Redo");
+
+    //Help menu items
+    MenuItem controlsItem = new MenuItem("Controls");
+    MenuItem aboutItem = new MenuItem("About");
+
+    //Adds menu items to the menus
+    menuFile.getItems().addAll(newItem,openItem,separatorMenuItem1,saveItem,saveAsItem,separatorMenuItem2,saveColorItem,loadColorItem,separatorMenuItem3,optionsItem,separatorMenuItem4,exitItem);
+    menuEdit.getItems().addAll(undoItem,redoItem);
+    menuHelp.getItems().addAll(controlsItem,aboutItem);
+
+    //Adds all the menus to the menu bar
+    menuBar.getMenus().addAll(menuFile,menuEdit,menuHelp);
 
     Stage colorPickerStage = new Stage();
     VBox colorPickerLayout = new VBox();
@@ -164,7 +163,8 @@ public class SuperPixelEditorView extends Application {
         if (!newWindowStage.isShowing()) {
           newWindowStage.show();
           newWindowLayout.setBackground(new Background(new BackgroundFill(colorPicker.getValue(), null, null)));
-        } else popupStage.show();
+        } else
+          popupStage.show();
       }
     });
 
@@ -182,7 +182,6 @@ public class SuperPixelEditorView extends Application {
       public void handle(ActionEvent event) {
         ColorPaletteController.saveColorPalette(colorPicker);
       }
-
     });
 
     Button loadBtn = new Button();
@@ -192,11 +191,10 @@ public class SuperPixelEditorView extends Application {
       public void handle(ActionEvent event) {
         ColorPaletteController.loadColorPalette(colorPicker);
       }
-
     });
 
     // Menu Item Functions
-    saveColorItem.setOnAction(new EventHandler<ActionEvent>(){
+    saveColorItem.setOnAction(new EventHandler<ActionEvent>() {
     	@Override
     	public void handle(ActionEvent event){
     		ColorPaletteController.saveColorPalette(colorPicker);
@@ -208,7 +206,6 @@ public class SuperPixelEditorView extends Application {
       public void handle(ActionEvent event) {
         ColorPaletteController.loadColorPalette(colorPicker);
       }
-
     });
 
     exitItem.setOnAction(new EventHandler<ActionEvent>() {
@@ -216,7 +213,6 @@ public class SuperPixelEditorView extends Application {
       public void handle(ActionEvent event) {
         System.exit(0);
       }
-
     });
 
     newItem.setOnAction(new EventHandler<ActionEvent>() {
@@ -250,8 +246,6 @@ public class SuperPixelEditorView extends Application {
       }
     });
 
-
-
     //Primary layout
     BorderPane root = new BorderPane();
 
@@ -269,11 +263,7 @@ public class SuperPixelEditorView extends Application {
     primaryStage.show();
   }
 
-  /**
-   * @param args the command line arguments
-   */
   public static void main(String[] args) {
     launch(args);
   }
-
 }

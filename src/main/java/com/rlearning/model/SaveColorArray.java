@@ -63,10 +63,7 @@ public class SaveColorArray {
     }
   }
   
-  
   // Getters and Setters
-  
-  
   public Color[] getColorArray() {
     return colorArray;
   }
