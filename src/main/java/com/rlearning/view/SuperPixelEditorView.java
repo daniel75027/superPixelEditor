@@ -1,4 +1,4 @@
-package main.java.com.rlearning.view;
+package com.rlearning.view;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -25,7 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import controller.ColorPaletteController;
+import com.rlearning.controller.ColorPaletteController;
 
 
 /**

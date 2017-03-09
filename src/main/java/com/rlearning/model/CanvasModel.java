@@ -1,4 +1,4 @@
-package model;
+package com.rlearning.model;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javax.swing.filechooser.FileSystemView;
 
-import controller.SuperPixelEditorController;
+import com.rlearning.controller.SuperPixelEditorController;
 
 
 /**

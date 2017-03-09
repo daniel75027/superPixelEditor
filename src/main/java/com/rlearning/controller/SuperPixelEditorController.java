@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package com.rlearning.controller;
 
 import javafx.scene.paint.Color;
 
-import main.java.com.rlearning.view.SuperPixelEditorView;
+import com.rlearning.view.SuperPixelEditorView;
 
 
 /**

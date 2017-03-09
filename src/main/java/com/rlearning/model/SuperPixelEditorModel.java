@@ -1,4 +1,4 @@
-package model;
+package com.rlearning.model;
 
 /**
  * TODO: complete me
