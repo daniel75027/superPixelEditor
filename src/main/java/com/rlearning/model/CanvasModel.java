@@ -63,7 +63,6 @@ public class CanvasModel implements Serializable {
 
   // Simple method to setup the whole canvas. (Without graphics editing at the moment despite having GraphicsContext variable.)
   // Call this method first to create canvas.
-  // TODO: Reduce duplicated code amongst these 2
   public void createCanvas(int windowWidth, int windowHeight, int canvasWidth, int canvasHeight, Color backgroundColor, Image image) {
     this.canvasGroup = new Group();
     this.canvasScene = new Scene(canvasGroup, windowWidth, windowHeight, backgroundColor);
@@ -71,12 +70,6 @@ public class CanvasModel implements Serializable {
     assignImage(image);
   }
 
-  public void createCanvas(int windowWidth, int windowHeight, int canvasWidth, int canvasHeight, Image image) {
-      this.canvasGroup = new Group();
-      this.canvasScene = new Scene(canvasGroup, windowWidth, windowHeight, Color.WHITE);
-      this.canvasObject = new Canvas(canvasWidth, canvasHeight);
-      assignImage(image);
-  }
 
   // Checking if image was sent through the createCanvas method.
   private void assignImage(Image image) {
