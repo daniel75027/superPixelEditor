@@ -6,24 +6,29 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+/**
+ * TODO: complete me
+ */
 public class SaveColorArray {
   
-  private Color[] colorArray = null;
-  private String fileDir = null;
-  private BufferedWriter bufferedWriter = null;
-  private FileWriter fileWriter = null;
-  private String fileContent = null;
+  private Color[] colorArray;
+  private String fileDir;
+  private BufferedWriter bufferedWriter;
+  private FileWriter fileWriter;
+  private String fileContent;
   
   // Gets the color array and directory and set it to the FileWriter and BufferWriter.
   // Added exception errors.
   // Call this method first to save the color array to file.
-  public void SaveArray(Color[] _color, String _dir) {
+  // TODO: Why is this method not a constructor?
+  public void saveArray(Color[] color, String dir) {
     // Set file directory
-    this.fileDir = _dir;
+    this.fileDir = dir;
     
     // Set color array
-    for (int i = 0; i < _color.length; i++) {
-      this.colorArray[i] = _color[i];
+    for (int i = 0; i < color.length; i++) {
+      this.colorArray[i] = color[i];
     }
     
     // Setup content to be put in the file. Check 'setupFileContent' method for more details.

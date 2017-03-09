@@ -7,9 +7,12 @@ package controller;
 
 import javafx.scene.paint.Color;
 
-import view.SuperPixelEditorView;
+import main.java.com.rlearning.view.SuperPixelEditorView;
 
 
+/**
+ * TODO: complete me
+ */
 public class SuperPixelEditorController {
   // This gets the color picker color for now. It will later be changed so that it
   // retrieves the color being used in the canvas & a function will be added that

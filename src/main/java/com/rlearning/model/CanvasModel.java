@@ -1,5 +1,11 @@
 package model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -8,14 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javax.swing.filechooser.FileSystemView;
-import java.io.*;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 
 import controller.SuperPixelEditorController;
 
 
+/**
+ * TODO: complete me
+ */
 public class CanvasModel implements Serializable {
   //gets RGB color value from controller which is gotten from view
   private Color currentViewPixelColor = SuperPixelEditorController.currentViewColorSelected();
@@ -23,126 +28,27 @@ public class CanvasModel implements Serializable {
   // using Java naming convention for final objects.
   // Gets Systems home directory path independent of platform/OS.
   private FileSystemView fileSystemView = FileSystemView.getFileSystemView();
-  private final File HOME_DIRECTORY = fileSystemView.getHomeDirectory();
-  private final File SUPER_PIXEL_EDITOR_DIRECTORY = new File(HOME_DIRECTORY + File.separator + "Super Pixel Editor");
-  private final File CANVAS_MODEL_DIRECTORY = new File(SUPER_PIXEL_EDITOR_DIRECTORY + File.separator + "Canvas Model");
-
-  //gets RGB color value from controller which is gotten from view
-  private Color currentViewPixelColor = SuperPixelEditorController.currentViewColorSelected();
-
-  // Group - container to hold the whole canvas.
-  private Group CanvasGroup = null;
-  private Scene CanvasScene = null;
-  private Canvas CanvasObject = null;
-  private GraphicsContext CanvasGraphics = null;
-
-  // Not sure if we're using these variables yet...
-  private Image CanvasImage = null;
-  private ImageView CanvasImageView = null;
-
-  // Simple method to setup the whole canvas. (Without graphics editing at the moment despite having GraphicsContext variable.)
-  // Call this method first to create canvas.
-  public void CreateCanvas(int WindowWidth, int WindowHeight, int CanvasWidth, int CanvasHeight, Color backgroundColor, Image image) {
-    this.CanvasGroup = new Group();
-    this.CanvasScene = new Scene(CanvasGroup, WindowWidth, WindowHeight, backgroundColor);
-    this.CanvasObject = new Canvas(CanvasWidth, CanvasHeight);
-    this.CHECK_IMAGE_NULL(image);
-  }
-  // Alternate CreateCanvas to handle calls lacking a backgroundColor argument.
-  public void CreateCanvas(int WindowWidth, int WindowHeight, int CanvasWidth, int CanvasHeight, Image image) {
-    this.CanvasGroup = new Group();
-    this.CanvasScene = new Scene(CanvasGroup, WindowWidth, WindowHeight, Color.WHITE);
-    this.CanvasObject = new Canvas(CanvasWidth, CanvasHeight);
-    this.CHECK_IMAGE_NULL(image);
-  }
-
-  // Checking if image was sent through the CreateCanvas method.
-  private void CHECK_IMAGE_NULL(Image img) {
-    if(img != null) {
-      // If image was sent through the method
-      this.CanvasImage = img;
-    } else {
-      // If image wasn't set as the argument of CreateCanvas method...
-      // Do nothing really...for now.
-      // Question: Are we really going to use images?
-    }
-  }
-
-  // Getters and Setters
-  // Note: I hope I did the getters and setters correctly. My OOP is very noob like the way I play dota2.
-  //     This is how I kinda do getters and setters in python.
-  //
-  // Info : The getters and setters may help other functions in the program to access the variables for
-  //       various modifications.
-
-  // GETTERS
-  public GraphicsContext GET_GRAPHICS() {
-    return this.CanvasGraphics;
-  }
-
-  public Group GET_GROUP() {
-    return this.CanvasGroup;
-  }
-
-  public Scene GET_SCENE() {
-    return this.CanvasScene;
-  }
-
-  public Image GET_IMAGE() {
-    return this.CanvasImage;
-  }
-
-  public ImageView GET_IMAGE_VEW() {
-    return this.CanvasImageView;
-  }
-
-  public Canvas GET_CANVAS() {
-    return this.CanvasObject;
-  }
+  private final File homeDirectory = fileSystemView.getHomeDirectory();
+  private final File superPixelEditorDirectory = new File(homeDirectory + File.separator + "Super Pixel Editor");
+  private final File canvasModelDirectory = new File(superPixelEditorDirectory + File.separator + "Canvas Model");
 
 
-  // SETTERS
-  public void SET_GROUP(Group g) {
-    this.CanvasGroup = g;
-  }
-
-  public void SET_SCENE(Scene sc) {
-    this.CanvasScene = sc;
-  }
-
-  public void SET_IMAGE(Image img) {
-    this.CanvasImage = img;
-  }
-
-  public void SET_CANVAS(Canvas c) {
-    this.CanvasObject = c;
-  }
-
-  public void SET_GRAPHICS(GraphicsContext gc) {
-    this.CanvasGraphics = gc;
-  }
-
-  public void SET_IMAGE_VIEW(ImageView iv) {
-    this.CanvasImageView = iv;
-  }
-        
-        
   //Method to reset canvas
-  public void ResetCanvas(){
-    this.CanvasObject = new Canvas(600,400); // TODO: replace values with variables for default canvas size or make a popup asking for canvas size
+  public void resetCanvas(){
+    this.canvasObject = new Canvas(600, 400); // TODO: replace values with variables for default canvas size or make a popup asking for canvas size
   }
 
   //Method to reset the graphics context
-  public void ResetGraphicsContext() {
-    this.CanvasGraphics = CanvasObject.getGraphicsContext2D();
+  public void resetGraphicsContext() {
+    this.canvasGraphics = canvasObject.getGraphicsContext2D();
   }
 
   // Method to reset the Canvas Model
   // Wasn't sure whether to reset all the variables so I played it safe and just reset the canvas and the graphics context
   // I have a feeling that the Image and Image viewer would need to be reset but wasn't sure what to do with it as it isn't inpmemented yet
-  public void ResetCanvasModel(){
-    ResetCanvas();
-    ResetGraphicsContext();
+  public void resetCanvasModel(){
+    resetCanvas();
+    resetGraphicsContext();
   }
 
   // Group - container to hold the whole canvas.
@@ -157,31 +63,41 @@ public class CanvasModel implements Serializable {
 
   // Simple method to setup the whole canvas. (Without graphics editing at the moment despite having GraphicsContext variable.)
   // Call this method first to create canvas.
-  public void CreateCanvas(int WindowWidth, int WindowHeight, int CanvasWidth, int CanvasHeight, Color backgroundColor, Image image) {
+  // TODO: Reduce duplicated code amongst these 2
+  public void createCanvas(int windowWidth, int windowHeight, int canvasWidth, int canvasHeight, Color backgroundColor, Image image) {
     this.canvasGroup = new Group();
-    this.canvasScene = new Scene(canvasGroup, WindowWidth, WindowHeight, backgroundColor);
-    this.canvasObject = new Canvas(CanvasWidth, CanvasHeight);
+    this.canvasScene = new Scene(canvasGroup, windowWidth, windowHeight, backgroundColor);
+    this.canvasObject = new Canvas(canvasWidth, canvasHeight);
     assignImage(image);
   }
 
-  // Checking if image was sent through the CreateCanvas method.
+  public void createCanvas(int windowWidth, int windowHeight, int canvasWidth, int canvasHeight, Image image) {
+      this.canvasGroup = new Group();
+      this.canvasScene = new Scene(canvasGroup, windowWidth, windowHeight, Color.WHITE);
+      this.canvasObject = new Canvas(canvasWidth, canvasHeight);
+      assignImage(image);
+  }
+
+  // Checking if image was sent through the createCanvas method.
   private void assignImage(Image image) {
     if (image != null) {
       this.canvasImage = image;
     } else {
-      // Consider throwing an exception to be handled higher up
+      // TODO: Consider throwing an exception to be handled higher up
       // throw new InputMismatchException("An image must be provided to the canvas.");
     }
   }
 
  private void createSuperPixelEditorDirectory(){
-   if (!SUPER_PIXEL_EDITOR_DIRECTORY.exists())
-     SUPER_PIXEL_EDITOR_DIRECTORY.mkdir();
+   if (!superPixelEditorDirectory.exists()) {
+     superPixelEditorDirectory.mkdir();
+   }
  }
 
   private void createCanvasModelDirectory(){
-    if (!CANVAS_MODEL_DIRECTORY.exists())
-      CANVAS_MODEL_DIRECTORY.mkdir();
+    if (!canvasModelDirectory.exists()) {
+      canvasModelDirectory.mkdir();
+    }
   }
 
   // Serializes CanvasModel data. Needs a file name including extension. Example: "Canvas_model.txt"
@@ -191,7 +107,7 @@ public class CanvasModel implements Serializable {
   public void serializeCanvasModel(String fileName) {
     createSuperPixelEditorDirectory();
     createCanvasModelDirectory();
-    File modelFile = new File(CANVAS_MODEL_DIRECTORY + File.separator + fileName);
+    File modelFile = new File(canvasModelDirectory + File.separator + fileName);
     try {
       FileOutputStream fileOutputStream = new FileOutputStream(modelFile);
       ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

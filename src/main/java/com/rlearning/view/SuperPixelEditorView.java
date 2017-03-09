@@ -11,18 +11,26 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import controller.ColorPaletteController;
-import model.CanvasModel;
-import main.java.com.rlearning.controller.CanvasResizeController;
-import main.java.com.rlearning.controller.ColorPaletteController;
 
 
+/**
+ * TODO: complete me
+ */
 public class SuperPixelEditorView extends Application {
   private static Color pixelColor;
 
@@ -163,8 +171,9 @@ public class SuperPixelEditorView extends Application {
         if (!newWindowStage.isShowing()) {
           newWindowStage.show();
           newWindowLayout.setBackground(new Background(new BackgroundFill(colorPicker.getValue(), null, null)));
-        } else
+        } else {
           popupStage.show();
+        }
       }
     });
 

@@ -16,11 +16,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
+/**
+ * TODO: complete me
+ */
 public class ColorPaletteController {
   private static final String CONFIG_FILE = "resources/config";
-  private static String recentSaveFileDir = null;
-  private static BufferedWriter bw = null;
-  private static FileWriter fw = null;
+  private static String recentSaveFileDir;
+  private static BufferedWriter bw;
+  private static FileWriter fw;
 
   public static void saveColorPalette(ColorPicker colorPicker) {
     FileChooser fileChooser = new FileChooser();
@@ -40,12 +43,12 @@ public class ColorPaletteController {
         pw = new PrintWriter(fileToSave);
         recentSaveFileDir = fileToSave.getParent();
         saveToConfig();
-        for (Color color : customColors)
+        for (Color color : customColors) {
           pw.println(String.valueOf(color.getRed()) + " " +
-              String.valueOf(color.getGreen()) + " " +
-              String.valueOf(color.getBlue()) + " " +
-              String.valueOf(color.getOpacity()));
-
+                  String.valueOf(color.getGreen()) + " " +
+                  String.valueOf(color.getBlue()) + " " +
+                  String.valueOf(color.getOpacity()));
+        }
       }
     } catch (FileNotFoundException e) {
       e.printStackTrace();

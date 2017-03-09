@@ -1,7 +1,8 @@
 package model;
 
-import javax.swing.filechooser.FileSystemView;
-
+/**
+ * TODO: complete me
+ */
 public class SuperPixelEditorModel {
 
 }
