@@ -83,8 +83,8 @@ public class ColorPaletteController {
           double[] colorParams = Arrays.stream(colorParamsStr)
               .mapToDouble(Double::parseDouble)
               .toArray();
-          if (colorParams.length == 4 && (1 - colorParams[0] >= 0) &&
-              (1 - colorParams[2] >= 0) && (1 - colorParams[2] >= 0) && (1 - colorParams[3] >= 0)) {
+          if (colorParams.length == 4 && 1 - colorParams[0] >= 0 &&
+              1 - colorParams[2] >= 0 && 1 - colorParams[2] >= 0 && 1 - colorParams[3] >= 0) {
             colorPicker.getCustomColors().add(new Color(colorParams[0], colorParams[1], colorParams[2], colorParams[3]));
           }
         }
