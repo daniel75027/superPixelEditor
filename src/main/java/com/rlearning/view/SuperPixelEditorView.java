@@ -41,6 +41,12 @@ public class SuperPixelEditorView extends Application {
   public static void setPixelColor(Color pixelColor) {
     SuperPixelEditorView.pixelColor = pixelColor;
   }
+  
+  @Override
+  public String toString(){
+  	return("Object base class: SuperPixelEditorView." + "\n" +
+               "This object has no instance variables. ");
+  }
 
   @Override
   public void start(Stage primaryStage) {
