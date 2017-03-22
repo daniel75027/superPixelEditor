@@ -38,7 +38,13 @@ public class ColorPaletteController {
   private static String recentSaveFileDir;
   private static BufferedWriter bw;
   private static FileWriter fw;
-
+  
+  @Override
+  public String toString(){
+  	return("Object base class: ColorPaletteController." + "\n" +
+               "This object has no instance variables.");
+    }
+  
   public static void saveColorPalette(ColorPicker colorPicker) {
     FileChooser fileChooser = new FileChooser();
     Stage saveFileStage = new Stage();
