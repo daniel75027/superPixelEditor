@@ -39,6 +39,7 @@ public class ColorPaletteController {
   private static BufferedWriter bw;
   private static FileWriter fw;
   
+  // toString method for debugging purposes.
   @Override
   public String toString(){
   	return("Object base class: ColorPaletteController." + "\n" +
