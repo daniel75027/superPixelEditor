@@ -41,7 +41,8 @@ public class SuperPixelEditorView extends Application {
   public static void setPixelColor(Color pixelColor) {
     SuperPixelEditorView.pixelColor = pixelColor;
   }
-  
+ 
+  // toString method for debugging purposes.
   @Override
   public String toString(){
   	return("Object base class: SuperPixelEditorView." + "\n" +
