@@ -32,6 +32,8 @@ import javafx.stage.Stage;
  *      public static void setRecentSavedDir(String sd)
  *
  *      public static String getRecentSavedDir()
+ *
+ *      public String toString()
  */
 public class ColorPaletteController {
   private static final String CONFIG_FILE = "resources/config";
@@ -39,12 +41,6 @@ public class ColorPaletteController {
   private static BufferedWriter bw;
   private static FileWriter fw;
   
-  // toString method for debugging purposes.
-  @Override
-  public String toString(){
-  	return("Object base class: ColorPaletteController." + "\n" +
-               "This object has no instance variables.");
-    }
   
   public static void saveColorPalette(ColorPicker colorPicker) {
     FileChooser fileChooser = new FileChooser();
@@ -176,5 +172,12 @@ public class ColorPaletteController {
     }
 
     return recentSaveFileDir;
+  }
+  
+  // toString method for debugging purposes.
+  @Override
+  public String toString(){
+  	return("Object base class: ColorPaletteController." + "\n" +
+               "This object has no instance variables.");
   }
 }
