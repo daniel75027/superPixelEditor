@@ -177,7 +177,7 @@ public class ColorPaletteController {
   // toString method for debugging purposes.
   @Override
   public String toString(){
-  	return("Object base class: ColorPaletteController." + "\n" +
+  	return("Object instantiated from class: " + getClass().getName() + "\n" +
                "This object has no instance variables.");
   }
 }
