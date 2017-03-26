@@ -45,8 +45,8 @@ public class SuperPixelEditorView extends Application {
   // toString method for debugging purposes.
   @Override
   public String toString(){
-  	return("Object base class: SuperPixelEditorView." + "\n" +
-               "This object has no instance variables. ");
+  	return("Object instantiated from class: " + getClass().getName() + "\n" +
+               "This object has no instance variables.");
   }
 
   @Override
